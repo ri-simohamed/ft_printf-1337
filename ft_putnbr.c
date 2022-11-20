@@ -1,47 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 20:43:21 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/20 01:34:48 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/20 23:21:30 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/20 23:21:33 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_len(unsigned long long num)
+static int	ft_len(int num)
 {
-	int len;
+	 int	len;
 
 	len = 0;
 	if (num == 0)
-		return (1);
-	while (num)
+		return 1;
+	if (num < 0)
 	{
-		num = num / 16;
 		len++;
+		num = num * (-1);
+	}
+	while (num != 0)
+	{
+		len++;
+		num = num / 10;
 	}
 	return (len);
 }
-
-int	ft_print_hex(unsigned long long number)
+int	ft_putnbr(int number)
 {
-	char *hex;
-	char base;
+	long int	n;
 
-	if (base == 'x')
-		hex = '0123456789abcdef';
-	else if (base == 'X')
-		hex = '0123456789ABCDEF';
-	if (number == 0)
-		ft_putchar('0');
-	else if (number < 16)
-		ft_putchar(hex[number]);
+	n = number;
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = n * (-1);
+	}
+	if (n < 10)
+	{
+		ft_putchar(n + '0');
+	}
 	else
-		ft_print_hex_low(number / 16);
-		ft_print_hex_low(number % 16);
-	return (ft_print_len(number));
+	{
+		ft_putnbr(n / 10);
+		ft_putchar(n % 10 + '0');
+	}
+	return (ft_len(number));
 }
