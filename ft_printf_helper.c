@@ -6,7 +6,7 @@
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 22:44:10 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/19 16:04:12 by mrami            ###   ########.fr       */
+/*   Updated: 2022/11/20 01:27:11 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,33 @@
 int	ft_putchar(int c)
 {
     write(1, &c, 1);
+	return (1);
 }
 
 int	ft_putnbr(int num)
 {
-	long int n;
-
-	n = num;
-	if (n < 0)
+	if (num == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return ;
+	}
+	if (num < 0)
 	{
 		ft_putchar('-');
-		n= n * (-1);
+		num= num * (-1);
 	}
-	if (n < 10)
+	if (num < 10)
 	{
-		ft_putchar(n + '0');
+		ft_putchar(num + '0');
 	}
 	else
 	{
-		ft_putnbr(n / 10 + '0');
-		ft_putchar(n % 10 + '0');
+		ft_putnbr(num / 10 + '0');
+		ft_putchar(num % 10 + '0');
 	}
 }
 
-void	ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
 	int i;
 	
@@ -50,9 +53,14 @@ void	ft_putstr(char *s)
 		write (1, &s[i], 1);
 		i++;
 	}
+	return (i);
 }
 
-void	ft_print_address(unsigned int c, const char s)
+int	ft_print_unsi_dec(unsigned int dec)
 {
-	
+	if (dec < 10)
+		ft_putchar(dec + '0');
+	else
+		ft_print_unsi_dec(dec / 10 + '0');
+		ft_print_unsi_dec(dec % 10 + '0');
 }
