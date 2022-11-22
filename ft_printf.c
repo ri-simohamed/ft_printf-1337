@@ -5,65 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:15:10 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/21 00:09:42 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/22 18:36:05 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/22 18:55:33 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
 int	ft_format(va_list args, const char format)
 {
-	int	lenprint;
+	int	printformlen;
 
-	lenprint = 0;
+	printformlen = 0;
 	if (format == 'c')
-		lenprint += ft_putchar(va_arg(args, int));
+		printformlen += ft_putchar(va_arg(args, int));
 	else if (format == 's')
-		lenprint += ft_putstr(va_arg(args, char *));
+		printformlen += ft_putstr(va_arg(args, char *));
 	else if (format == 'p')
 	{
-		lenprint += ft_putstr("0x");
-		lenprint += ft_putpntr(va_arg(args, unsigned long int));
+		printformlen += ft_putstr("0x");
+		printformlen += ft_put_hexad(va_arg(args, unsigned long int));
 	}
 	else if (format == 'x')
-		lenprint += ft_puthdmllow(va_arg(args, unsigned int));
+		printformlen += ft_put_hexadecimal_low(va_arg(args, unsigned int));
 	else if (format == 'd' || format == 'i')
-		lenprint += ft_putnbr(va_arg(args, int));
+		printformlen += ft_putnbr(va_arg(args, int));
 	else if (format == 'u')
-		lenprint += ft_putdcml(va_arg(args, unsigned int));
+		printformlen += ft_putdcml(va_arg(args, unsigned int));
 	else if (format == 'X')
-		lenprint += ft_puthdmlup(va_arg(args, unsigned int));
+		printformlen += ft_put_hexadecimal_upp(va_arg(args, unsigned int));
 	else if (format == '%')
-		lenprint += ft_putchar('%');
-	
-	return (lenprint);
+		printformlen += ft_putchar('%');
+	return (printformlen);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(const char *s, ...)
 {
 	int		i;
 	va_list	args;
-	int		lenprint;
+	int		printlenfprm;
 
 	i = 0;
-	lenprint = 0;
-	va_start(args, str);
-	while (str[i])
+	printlenfprm = 0;
+	va_start(args, s);
+	while (s[i])
 	{
-		if (str[i] == '%')
+		if (s[i] == '%')
 		{
 			i++;
-			lenprint += ft_format(args, str[i]);
-			
+			printlenfprm += ft_format(args, s[i]);
 		}
 		else
 		{
-			lenprint += ft_putchar(str[i]);
-		
-		}i++;
+			printlenfprm += ft_putchar(s[i]);
+		}
+		i++;
 	}
 	va_end(args);
-	return (lenprint);
+	return (printlenfprm);
 }

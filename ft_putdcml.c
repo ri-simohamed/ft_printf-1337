@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:20:51 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/20 23:20:57 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/22 18:35:14 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/22 18:45:33 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_len(unsigned	int num)
 
 	len = 0;
 	if (num == 0)
-		return 1;
+		return (1);
 	while (num != 0)
 	{
 		len++;
@@ -26,15 +26,12 @@ static int	ft_len(unsigned	int num)
 	}
 	return (len);
 }
+
 int	ft_putdcml(unsigned int num)
 {
-	char *dml;
+	char	*dml;
 
 	dml = "0123456789";
-	if (num == '0')
-	{
-		ft_putchar('0');
-	}
 	if (num < 10)
 	{
 		ft_putchar(dml[num]);

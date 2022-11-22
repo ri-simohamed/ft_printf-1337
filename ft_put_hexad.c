@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthdmlup.c                                     :+:      :+:    :+:   */
+/*   ft_put_hexad.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:21:20 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/20 23:21:26 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/22 18:35:49 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/22 18:42:26 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_len(unsigned	int num)
+static int	ft_len(unsigned	long long num)
 {
 	int	len;
 
 	len = 0;
 	if (num == 0)
-		return 1;
+		return (1);
 	while (num != 0)
 	{
 		len++;
@@ -26,23 +26,24 @@ static int	ft_len(unsigned	int num)
 	}
 	return (len);
 }
-int	ft_puthdmlup(unsigned int hdml)
-{
-	char *hex;
 
-	hex = "0123456789ABCDEF";
-	if (hdml == '0')
+int	ft_put_hexad(unsigned long long ptr)
+{
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	if (ptr == '0')
 	{
 		ft_putchar('0');
 	}
-	if (hdml < 16)
+	if (ptr < 16)
 	{
-		ft_putchar(hex[hdml]);
+		ft_putchar(hex[ptr]);
 	}
 	else
 	{
-		ft_puthdmlup(hdml / 16);
-		ft_puthdmlup(hdml % 16);
+		ft_put_hexad(ptr / 16);
+		ft_put_hexad(ptr % 16);
 	}
-	return (ft_len(hdml));
+	return (ft_len(ptr));
 }

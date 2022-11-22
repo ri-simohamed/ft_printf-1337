@@ -5,26 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:21:47 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/20 23:21:50 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/22 18:34:50 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/22 18:47:23 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_putstr(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if (!str)
+	if (!s)
 	{
-			write(1, "(null)", 6);
-			return (6);
+		write(1, "(null)", 6);
+		return (6);
 	}
-	while (str[i])
+	while (s[i])
 	{
-		write(1, &str[i], 1);
+		write(1, &s[i], 1);
 		i++;
 	}
 	return (i);

@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:21:10 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/20 23:21:13 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/22 18:35:21 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/22 18:44:52 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(int c)
+int	ft_putchar(int c)
 {
 	write(1, &c, 1);
-	return(1);
+	return (1);
 }

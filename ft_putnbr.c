@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:21:30 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/20 23:21:33 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/22 18:34:58 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/22 18:46:44 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	ft_len(int num)
 {
-	 int	len;
+	int	len;
 
 	len = 0;
 	if (num == 0)
-		return 1;
+		return (1);
 	if (num < 0)
 	{
 		len++;
@@ -31,6 +31,7 @@ static int	ft_len(int num)
 	}
 	return (len);
 }
+
 int	ft_putnbr(int number)
 {
 	long int	n;
