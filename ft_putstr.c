@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:34:50 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/22 18:47:23 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/23 11:20:22 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/23 14:44:16 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include"ft_printf.h"
 
 int	ft_putstr(char *s)
 {

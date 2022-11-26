@@ -5,31 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:34:58 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/22 18:46:44 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/23 11:27:12 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/23 14:41:09 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include"ft_printf.h"
 
-static int	ft_len(int num)
+static int	ft_printfcount_num(int num)
 {
-	int	len;
+	int	counter;
 
-	len = 0;
+	counter = 0;
 	if (num == 0)
 		return (1);
 	if (num < 0)
-	{
-		len++;
-		num = num * (-1);
-	}
+		counter = counter + 1;
 	while (num != 0)
 	{
-		len++;
+		counter++;
 		num = num / 10;
 	}
-	return (len);
+	return (counter);
 }
 
 int	ft_putnbr(int number)
@@ -51,5 +48,5 @@ int	ft_putnbr(int number)
 		ft_putnbr(n / 10);
 		ft_putchar(n % 10 + '0');
 	}
-	return (ft_len(number));
+	return (ft_printfcount_num(number));
 }

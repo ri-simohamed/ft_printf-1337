@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putdcml.c                                       :+:      :+:    :+:   */
+/*   ft_put_hexa_add.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:35:14 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/22 18:45:33 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/23 12:51:56 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/23 14:40:19 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include"ft_printf.h"
 
-static int	ft_len(unsigned	int num)
+static int	ft_print_len(unsigned long long num)
 {
 	int	len;
 
@@ -22,24 +22,22 @@ static int	ft_len(unsigned	int num)
 	while (num != 0)
 	{
 		len++;
-		num = num / 10;
+		num = num / 16;
 	}
 	return (len);
 }
 
-int	ft_putdcml(unsigned int num)
+int	ft_put_hexa_add(unsigned long long number)
 {
-	char	*dml;
+	char	*hexadcimal;
 
-	dml = "0123456789";
-	if (num < 10)
-	{
-		ft_putchar(dml[num]);
-	}
+	hexadcimal = "0123456789abcdef";
+	if (number < 16)
+		ft_putchar(hexadcimal[number]);
 	else
 	{
-		ft_putdcml(num / 10);
-		ft_putdcml(num % 10);
+		ft_put_hexa_add(number / 16);
+		ft_put_hexa_add(number % 16);
 	}
-	return (ft_len(num));
+	return (ft_print_len(number));
 }

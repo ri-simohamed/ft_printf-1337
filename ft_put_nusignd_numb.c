@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_hexadecimal_low.c                           :+:      :+:    :+:   */
+/*   ft_put_nusignd_numb.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:35:42 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/22 18:43:32 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/23 13:16:11 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/23 14:40:52 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include"ft_printf.h"
 
-static int	ft_len(unsigned int num)
+static int	ft_print_len_num(unsigned int num)
 {
 	int	len;
 
@@ -22,24 +22,22 @@ static int	ft_len(unsigned int num)
 	while (num != 0)
 	{
 		len++;
-		num = num / 16;
+		num = num / 10;
 	}
 	return (len);
 }
 
-int	ft_put_hexadecimal_low(unsigned int number)
+int	ft_put_nusignd_numb(unsigned int number)
 {
-	char	*hex;
+	char	*decimal;
 
-	hex = "0123456789abcdef";
-	if (number < 16)
-	{
-		ft_putchar(hex[number]);
-	}
+	decimal = "0123456789";
+	if (number < 10)
+		ft_putchar(decimal[number]);
 	else
 	{
-		ft_put_hexadecimal_low(number / 16);
-		ft_put_hexadecimal_low(number % 16);
+		ft_put_nusignd_numb(number / 10);
+		ft_put_nusignd_numb(number % 10);
 	}
-	return (ft_len(number));
+	return (ft_print_len_num(number));
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_hexadecimal_upp.c                           :+:      :+:    :+:   */
+/*   ft_put_hexad_upp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:35:30 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/22 18:44:19 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/23 14:11:27 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/23 14:40:40 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include"ft_printf.h"
 
-static int	ft_len(unsigned	int num)
+static int	ft_print_len_upp(unsigned int num)
 {
 	int	len;
 
@@ -27,23 +27,19 @@ static int	ft_len(unsigned	int num)
 	return (len);
 }
 
-int	ft_put_hexadecimal_upp(unsigned int number)
+int	ft_put_hexad_upp(unsigned int number)
 {
-	char	*hex;
+	char	*hexad_upp;
 
-	hex = "0123456789ABCDEF";
-	if (number == '0')
-	{
-		ft_putchar('0');
-	}
+	hexad_upp = "0123456789ABCDEF";
 	if (number < 16)
 	{
-		ft_putchar(hex[number]);
+		ft_putchar(hexad_upp[number]);
 	}
 	else
 	{
-		ft_put_hexadecimal_upp(number / 16);
-		ft_put_hexadecimal_upp(number % 16);
+		ft_put_hexad_upp(number / 16);
+		ft_put_hexad_upp(number % 16);
 	}
-	return (ft_len(number));
+	return (ft_print_len_upp(number));
 }

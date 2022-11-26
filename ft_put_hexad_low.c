@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_hexad.c                                     :+:      :+:    :+:   */
+/*   ft_put_hexad_low.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrami <mrami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:35:49 by mrami             #+#    #+#             */
-/*   Updated: 2022/11/22 18:42:26 by mrami            ###   ########.fr       */
+/*   Created: 2022/11/23 14:02:09 by mrami             #+#    #+#             */
+/*   Updated: 2022/11/24 17:11:13 by mrami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include"ft_printf.h"
 
-static int	ft_len(unsigned	long long num)
+static int	ft_print_len_low(unsigned int num)
 {
 	int	len;
 
@@ -27,23 +27,19 @@ static int	ft_len(unsigned	long long num)
 	return (len);
 }
 
-int	ft_put_hexad(unsigned long long ptr)
+int	ft_put_hexad_low(unsigned int number)
 {
-	char	*hex;
+	char	*hexad_low;
 
-	hex = "0123456789abcdef";
-	if (ptr == '0')
+	hexad_low = "0123456789abcdef";
+	if (number < 16)
 	{
-		ft_putchar('0');
-	}
-	if (ptr < 16)
-	{
-		ft_putchar(hex[ptr]);
+		ft_putchar(hexad_low[number]);
 	}
 	else
 	{
-		ft_put_hexad(ptr / 16);
-		ft_put_hexad(ptr % 16);
+		ft_put_hexad_low(number / 16);
+		ft_put_hexad_low(number % 16);
 	}
-	return (ft_len(ptr));
+	return (ft_print_len_low(number));
 }
